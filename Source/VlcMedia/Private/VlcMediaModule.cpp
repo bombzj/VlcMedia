@@ -85,7 +85,7 @@ public:
 			TCHAR_TO_ANSI(*(FString::Printf(TEXT("--network-caching=%i"), (int32)Settings->NetworkCaching.GetTotalMilliseconds()))),
 
 			// config
-			"--ignore-config",
+			//"--ignore-config",
 
 			// logging
 #if UE_BUILD_DEBUG
@@ -100,19 +100,23 @@ public:
 #endif
 
 			// output
-			"--aout", "amem",
-			"--intf", "dummy",
-			"--text-renderer", "dummy",
-			"--vout", "vmem",
+			//"--aout=amem",
+			//"--intf=dummy",
+			//"--text-renderer=dummy",
+			//"--vout=vmem",
 
 			// performance
-			"--drop-late-frames",
+			//"--drop-late-frames",
 
 			// undesired features
-			"--no-disable-screensaver",
-			"--no-plugins-cache",
-			"--no-snapshot-preview",
-			"--no-video-title-show",
+			//"--no-stats",
+			//"--no-sub-autodetect-file",
+			//"--no-inhibit",
+
+			//"--no-disable-screensaver",
+			//"--no-plugins-cache",
+			//"--no-snapshot-preview",
+			//"--no-video-title-show",
 
 #if (UE_BUILD_SHIPPING || UE_BUILD_TEST)
 			"--no-stats",
@@ -125,6 +129,7 @@ public:
 
 		int Argc = sizeof(Args) / sizeof(*Args);
 		VlcInstance = FVlc::New(Argc, Args);
+		//VlcInstance = FVlc::New(0, NULL);
 
 		if (VlcInstance == nullptr)
 		{
